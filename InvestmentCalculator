@@ -1,0 +1,86 @@
+// Airgead Banking Investment Calculator
+// Shows investment growth with and without monthly deposits
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+class InvestmentCalculator {
+private:
+    double initialInvestment;
+    double monthlyDeposit;
+    double annualInterest;
+    int numYears;
+
+public:
+    // Ask user for input
+    void getUserInput() {
+        cout << "\n==============================\n";
+        cout << "=  Investment Calculator     =" << endl;
+        cout << "==============================\n";
+
+        cout << "Enter initial investment amount: $";
+        cin >> initialInvestment;
+
+        cout << "Enter monthly deposit: $";
+        cin >> monthlyDeposit;
+
+        cout << "Enter annual interest rate (in %): ";
+        cin >> annualInterest;
+
+        cout << "Enter number of years: ";
+        cin >> numYears;
+    }
+
+    // Show results without monthly deposit
+    void showWithoutMonthlyDeposit() {
+        double balance = initialInvestment;
+        double interest;
+
+        cout << "\nBalance and Interest Without Monthly Deposits" << endl;
+        cout << "Year\tYear End Balance\tYear End Earned Interest" << endl;
+        cout << "-----------------------------------------------" << endl;
+
+        for (int year = 1; year <= numYears; ++year) {
+            interest = balance * (annualInterest / 100);
+            balance += interest;
+            cout << year << "\t$" << fixed << setprecision(2) << balance
+                 << "\t\t$" << interest << endl;
+        }
+    }
+
+    // Show results with monthly deposit
+    void showWithMonthlyDeposit() {
+        double balance = initialInvestment;
+        double totalInterest, monthlyInterest;
+
+        cout << "\nBalance and Interest With Monthly Deposits" << endl;
+        cout << "Year\tYear End Balance\tYear End Earned Interest" << endl;
+        cout << "--------------------------------------------" << endl;
+
+        for (int year = 1; year <= numYears; ++year) {
+            totalInterest = 0.0;
+
+            for (int month = 1; month <= 12; ++month) {
+                balance += monthlyDeposit;
+                monthlyInterest = balance * (annualInterest / 100 / 12);
+                balance += monthlyInterest;
+                totalInterest += monthlyInterest;
+            }
+
+            cout << year << "\t$" << fixed << setprecision(2) << balance
+                 << "\t\t$" << totalInterest << endl;
+        }
+    }
+};
+
+int main() {
+    InvestmentCalculator calc;
+
+    calc.getUserInput();
+    calc.showWithoutMonthlyDeposit();
+    calc.showWithMonthlyDeposit();
+
+    return 0;
+}

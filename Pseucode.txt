@@ -1,0 +1,99 @@
+Start
+
+1.Make a class called InvestmentCalculator
+
+2.Inside the class, make these variables:
+
+initialInvestment
+
+monthlyDeposit
+
+annualInterest
+
+numYears
+
+3.Inside the class, make these functions:
+
+getUserInput()
+
+showWithoutMonthlyDeposit()
+
+showWithMonthlyDeposit()
+
+
+In main()
+
+4.Make an object of the class
+
+5.Call getUserInput() to ask user for:
+
+Starting money
+
+Monthly deposit
+
+Interest rate
+
+Years to grow
+
+6.Show the first table:
+
+Call showWithoutMonthlyDeposit()
+
+7.Show the second table:
+
+Call showWithMonthlyDeposit()
+
+
+Function: getUserInput()
+
+8.Ask the user:
+
+"How much do you want to invest?"
+
+"How much will you add every month?"
+
+"What is the yearly interest rate?"
+
+"For how many years?"
+
+9.Save the answers
+
+Function: showWithoutMonthlyDeposit()
+
+10.Print table header
+
+11.Set balance = initialInvestment
+
+12.For each year:
+
+Calculate interest:
+interest = balance * (annualInterest / 100)
+
+Add interest to balance
+
+Print year, balance, interest
+
+Function: showWithMonthlyDeposit()
+
+13.Print table header
+
+14.Set balance = initialInvestment
+
+15.For each year:
+
+Set yearly interest = 0
+
+For each month (12 times):
+
+Add monthlyDeposit to balance
+
+Calculate monthly interest:
+monthlyInterest = balance * (annualInterest / 12 / 100)
+
+Add interest to balance
+
+Add monthly interest to yearly interest
+
+Print year, balance, total interest
+
+End
